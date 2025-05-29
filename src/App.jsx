@@ -10,11 +10,6 @@ function App() {
   //   return defaultContacts;
   // });
 
-  // const counter = useSelector((state) => {
-  //   console.log(state.counter.value);
-  //   return state.counter.value;
-  // });
-
   // useEffect(() => {
   //   localStorage.setItem("contactsData", JSON.stringify(contacts));
   // }, [contacts]);
@@ -33,15 +28,12 @@ function App() {
   //   });
   // };
 
-  // const searchContact = contacts.filter((contact) =>
-  //   contact.name.toLowerCase().includes(search.toLowerCase()),
-  // );
   return (
     <>
       <div className={"container"}>
         <h1>Phonebook</h1>
         <ContactForm />
-        {/*<SearchBox search={search} setSearch={setSearch} />*/}
+        <SearchBox />
         <ContactList />
       </div>
     </>

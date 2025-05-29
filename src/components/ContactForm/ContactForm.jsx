@@ -2,8 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import styles from "./ContactForm.module.css";
 import { v4 as generatedId } from "uuid";
 import * as Yup from "yup";
-import PropTypes from "prop-types";
-import { add } from "../../redux/contactsSlice.js";
+import { addContact } from "../../redux/contactsSlice.js";
 import { useDispatch } from "react-redux";
 
 const FeedbackSchema = Yup.object().shape({
@@ -23,12 +22,12 @@ const FeedbackSchema = Yup.object().shape({
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const addContact = (newContact) => {
-    dispatch(add(newContact));
+  const addNewContact = (newContact) => {
+    dispatch(addContact(newContact));
   };
 
   const handleSubmit = (value, actions) => {
-    addContact({
+    addNewContact({
       id: generatedId(),
       name: value.name,
       number: value.number,
@@ -79,10 +78,6 @@ const ContactForm = () => {
       </div>
     </Formik>
   );
-};
-
-ContactForm.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
