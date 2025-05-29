@@ -1,4 +1,4 @@
-import "../../goit-neo-react-hw-module6/src/App.css";
+import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm.jsx";
 import ContactList from "./components/ContactList/ContactList.jsx";
 import SearchBox from "./components/SearchBox/SearchBox.jsx";
