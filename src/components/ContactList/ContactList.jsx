@@ -1,17 +1,26 @@
 import styles from "./ContactList.module.css";
 import Contact from "../Contact/Contact.jsx";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { del } from "../../redux/contactsSlice.js";
 
-const ContactList = ({ onSearchContact, onDeleteContact }) => {
+const ContactList = () => {
+  const contacts = useSelector((state) => state.contacts.items);
+
+  const dispatch = useDispatch();
+  const deleteContact = (contactId) => {
+    dispatch(del(contactId));
+  };
+
   return (
     <ul className={styles.list}>
-      {onSearchContact.map((contact) => (
+      {contacts.map((contact) => (
         <li key={contact.id}>
           <Contact
             id={contact.id}
             name={contact.name}
             number={contact.number}
-            onDeleteContact={onDeleteContact}
+            onDeleteContact={deleteContact}
           />
         </li>
       ))}

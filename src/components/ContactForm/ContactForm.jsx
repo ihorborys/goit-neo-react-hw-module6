@@ -3,6 +3,8 @@ import styles from "./ContactForm.module.css";
 import { v4 as generatedId } from "uuid";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
+import { add } from "../../redux/contactsSlice.js";
+import { useDispatch } from "react-redux";
 
 const FeedbackSchema = Yup.object().shape({
   id: Yup.string()
@@ -19,9 +21,14 @@ const FeedbackSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+  const addContact = (newContact) => {
+    dispatch(add(newContact));
+  };
+
   const handleSubmit = (value, actions) => {
-    onAddContact({
+    addContact({
       id: generatedId(),
       name: value.name,
       number: value.number,
