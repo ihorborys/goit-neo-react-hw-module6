@@ -1,7 +1,6 @@
 import styles from "./ContactList.module.css";
 import Contact from "../Contact/Contact.jsx";
 import { useSelector } from "react-redux";
-// import { deleteContact } from "../../redux/contactsSlice.js";
 
 const ContactList = () => {
   const contacts = useSelector((state) => state.contacts.items);
